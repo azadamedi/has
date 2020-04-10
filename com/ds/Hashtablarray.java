@@ -1,8 +1,16 @@
-package com.ds;
 
+      package com.ds;
+import java.util.Hashtable;
 public class Hashtablarray<T> { //"T" to select datatype of hashtable
     Entry[]arrayHash;
-    int Size;
+    private static int Size;
+
+    private static int arraysize;
+    public static int getSize() {
+        return Size;
+    }
+
+
     public Hashtablarray(int Size){ // constracture
         this .Size=Size;
         arrayHash=new Entry[this.Size];
@@ -10,11 +18,12 @@ public class Hashtablarray<T> { //"T" to select datatype of hashtable
             arrayHash[i]=new Entry<T>();
 
     }
-    int GetHash(int key){
+    int GetHash(String key){
 
-        return key%Size; // many way
+         int key1=Math.abs(key.hashCode())%Size ; // many way
+        return key1;
     }
-    public void put(int key ,T value){
+    public void put(String key ,T value){
 int index= GetHash(key);
 Entry ArrayValue=arrayHash[index]; // link list
 Entry newitem=new Entry<T>(key,value);
@@ -23,13 +32,13 @@ ArrayValue.next=newitem;
 
 
     }
-    public T Get(int key){
+    public T Get(String key){
         T value=null;
         int index=GetHash(key);
         Entry ArrayValue=arrayHash[index];
         while(ArrayValue!=null)
         {
-            if (ArrayValue.Getkey()==key){
+            if (ArrayValue.getKey()==key){
                 value=(T)ArrayValue.getValue();
                 break;
             }
@@ -40,6 +49,9 @@ ArrayValue.next=newitem;
 
     }
 }
+
+
+
 
 
 
