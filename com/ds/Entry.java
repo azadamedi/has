@@ -1,10 +1,20 @@
-package com.ds;
+
+    package com.ds;
 
 public class Entry<T> {
-    int key;
+    String key;
     T value ;
+
+    public String getKey() {
+        return key;
+    }
+
+    public T getValue() {
+        return value;
+    }
+
     Entry next;
-   public Entry(int key, T value){
+   public Entry(String key, T value){
         this.key =key;
         this.value=value;
         next=null;
@@ -15,12 +25,6 @@ public class Entry<T> {
         next=null;
 
     }
-    public int Getkey(){
 
-        return key;
-    }
-    public T getValue()
-    {
-        return value;
-    }
 }
+
