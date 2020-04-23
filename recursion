@@ -1,0 +1,53 @@
+#include<iostream>
+using namespace std;
+struct node {
+	int data;
+	node* next;
+
+};
+
+void search(node* p, int value);
+int main() {
+
+	// creat first node
+	node* n = new node;
+	node* head = n;
+	node* t = n;
+	n->data = 1;
+	// using for loop to creat other nodes
+	for (int i = 2; i < 10; i++) {
+		n = new node;
+		n->data = i;
+		t->next = n;
+		t = n;
+	}
+	n->next = NULL;
+	t = head;
+	while (t!=NULL) {
+		cout << t->data << " ";
+		t = t->next;
+
+	}
+	cout << "\n\n";
+	search(head, 4);
+	search(head, 11);
+	return 0;
+
+
+}
+void search(node* p, int value) // search method
+{
+	if (p == NULL) {
+
+		cout <<value <<  "was not found\n";
+
+	}
+	else if (p->data==value) {
+		cout << value <<  "is in the list\n";
+
+	}
+	else {
+		search(p->next, value);//  recursion 
+	}
+	
+}
